@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP® Success Program - Become a Certified Project Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- IP Detection Banner -->
+    <div class="ip-banner" id="ipBanner">
+        <div class="container">
+            <div class="ip-info">
+                <img id="countryFlag" src="" alt="Country Flag" class="country-flag">
+                <span id="locationInfo">Detecting your location...</span>
+                <span class="ip-text">IP: <span id="userIP">Loading...</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <div class="container">
+          <div class="banner-content">
+            <!-- Replace text with logo image -->
+            <div class="pmp-logo">
+              <img src="./public/ta.png" alt="TechAdemy" style="height: 60px;" />
+            </div>
+            <h1>Congratulations! You're Just One Step Away From Becoming a Certified Project Manager</h1>
+          </div>
+        </div>
+      </div>
+      
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Section - Program Benefits -->
+                <div class="benefits-section">
+                    <h2>Here's Everything You Will Get</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-video"></i>
+                            <span>Live Online Sessions</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-clock"></i>
+                            <span>35 Contact Hours</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Doubt Support</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>PMP Exam Simulator</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Application Assistance</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-linkedin"></i>
+                            <span>Resume & LinkedIn Optimization</span>
+                        </div>
+                    </div>
+                    <div class="course-image">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Course Materials">
+                    </div>
+                </div>
+
+                <!-- Right Section - Registration Form -->
+                <div class="registration-section">
+                    <div class="form-card">
+                        <h3>The PMP Success Program</h3>
+                        <form id="registration-form">
+                            <div class="form-group">
+                                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <select id="country" name="country" required>
+                                        <option value="">Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="IN">India</option>
+                                        <option value="AU">Australia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select id="state" name="state" required>
+                                        <option value="">State</option>
+                                        <option value="CA">California</option>
+                                        <option value="NY">New York</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="FL">Florida</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="city" name="city" placeholder="City" required>
+                            </div>
+                        </form>
+
+                        <div class="pricing-section">
+                            <div class="price-row">
+                                <span>Original Price:</span>
+                                <span class="original-price">₹29,999</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Discounted Price:</span>
+                                <span class="discounted-price">₹19,999</span>
+                            </div>
+                            <div class="price-row total">
+                                <span>Total:</span>
+                                <span class="total-price">₹19,999</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Options -->
+                        <div class="payment-options">
+                            <h4>Choose Payment Method:</h4>
+                            <div class="payment-method-buttons">
+                                <button type="button" class="payment-method-btn active" data-method="stripe">
+                                    <i class="fas fa-credit-card"></i>
+                                    Pay on Page
+                                </button>
+                                <button type="button" class="payment-method-btn" data-method="redirect">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Go to Stripe
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="enroll-btn" onclick="handleEnrollment()">
+                            <i class="fas fa-play"></i>
+                            ENROLL NOW
+                        </button>
+
+                        <div class="guarantee-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            100% Money Back Guarantee
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guarantee Section -->
+    <div class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-content">
+                <h3>First, Money Pass Guarantee</h3>
+                <p>We're so confident in our program that we offer a 100% money-back guarantee if you don't pass your PMP exam on the first attempt.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Journey Section -->
+    <div class="journey-section">
+        <div class="container">
+            <div class="journey-content">
+                <div class="journey-text">
+                    <h3>Let's Make Your PMP Journey Official!</h3>
+                    <div class="journey-benefits">
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Live Online Sessions</span>
+                        </div>
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>35 Contact Hours</span>
+                        </div>
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Doubt Support</span>
+                        </div>
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>PMP Exam Simulator</span>
+                        </div>
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Application Assistance</span>
+                        </div>
+                        <div class="journey-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Resume & LinkedIn Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="journey-image">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Clock">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bonuses Section -->
+    <div class="bonuses-section">
+        <div class="container">
+            <h2>Unlock 2 Exclusive Bonuses Worth ₹16,400/-</h2>
+            <div class="bonuses-grid">
+                <div class="bonus-card">
+                    <div class="bonus-image">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Interview Success Kit">
+                    </div>
+                    <div class="bonus-content">
+                        <h3>Bonus 1: Interview Success Kit</h3>
+                        <p>Master the art of PMP interviews with our comprehensive guide and mock interview sessions.</p>
+                    </div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-image">
+                        <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="AI for PMs Workshop">
+                    </div>
+                    <div class="bonus-content">
+                        <h3>Bonus 2: AI for PMs Workshop</h3>
+                        <p>Learn how to leverage AI tools in project management and stay ahead of the curve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials-section">
+        <div class="container">
+            <h2>Rated 4.8/5 by 2000+ Learners</h2>
+            <div class="testimonials-content">
+                <div class="whatsapp-chats">
+                    <div class="chat-bubble">
+                        <div class="chat-header">
+                            <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Student">
+                            <span>Sarah M.</span>
+                        </div>
+                        <p>"Just passed my PMP exam! This program is amazing. The instructors are top-notch!"</p>
+                    </div>
+                    <div class="chat-bubble">
+                        <div class="chat-header">
+                            <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Student">
+                            <span>Mike R.</span>
+                        </div>
+                        <p>"The exam simulator helped me so much. Scored above target in all domains!"</p>
+                    </div>
+                    <div class="chat-bubble">
+                        <div class="chat-header">
+                            <img src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Student">
+                            <span>Lisa K.</span>
+                        </div>
+                        <p>"Best investment in my career. Got promoted within 3 months of certification!"</p>
+                    </div>
+                </div>
+                <div class="video-testimonials">
+                    <div class="video-thumbnail">
+                        <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop" alt="Video Testimonial">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <p>How I Achieved PMP Certification...</p>
+                    </div>
+                    <div class="video-thumbnail">
+                        <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop" alt="Video Testimonial">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <p>My PMP Success Story...</p>
+                    </div>
+                    <div class="video-thumbnail">
+                        <img src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=200&h=150&fit=crop" alt="Video Testimonial">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <p>From Beginner to PMP...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>APTECHADEMY</h3>
+                    <p>Empowering professionals with world-class PMP certification training.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#benefits">Program Benefits</a></li>
+                            <li><a href="#bonuses">Bonuses</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact Support</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 APTECHADEMY. All rights reserved. PMP® is a registered trademark of Project Management Institute, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complete Your PMP Enrollment</h3>
+                <span class="close" onclick="closePaymentModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <div class="plan-info">
+                        <h4>PMP Success Program</h4>
+                        <p>₹19,999</p>
+                        <div class="bonus-info">
+                            <span>+ 2 Exclusive Bonuses Worth ₹16,400</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="modal-email">Email Address</label>
+                        <input type="email" id="modal-email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modal-name">Full Name</label>
+                        <input type="text" id="modal-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-element">Card Information</label>
+                        <div id="card-element" class="card-element">
+                            <!-- Stripe Elements will create form elements here -->
+                        </div>
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+                    
+                    <button type="submit" id="submit-payment" class="payment-btn">
+                        <span id="button-text">Complete Payment - ₹19,999</span>
+                        <div id="spinner" class="spinner hidden"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Enrollment Successful!</h3>
+            <p>Welcome to the PMP Success Program! You'll receive a confirmation email with your login details shortly.</p>
+            <button onclick="closeSuccessModal()" class="btn-primary">Continue</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
